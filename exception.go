@@ -1,7 +1,11 @@
 package o
 
+import (
+	"fmt"
+)
+
 type Throwable interface {
-	Message() string
+	fmt.Stringer
 }
 
 type Exception struct {
@@ -14,6 +18,6 @@ func NewException(message string) *Exception {
 	}
 }
 
-func (this *Exception) Message() string {
-	return this.message
+func (this *Exception) String() string {
+	return "[Exception] " + this.message
 }
