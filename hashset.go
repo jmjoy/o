@@ -34,11 +34,12 @@ func (this *HashSet) Size() int {
 	return this.size
 }
 
-func (this *HashSet) Walk(f func(interface{}) error) {
+func (this *HashSet) Walk(f func(interface{}) error) error {
 	for i := range this.m {
 		err := f(i)
 		if err != nil {
-			break
+			return err
 		}
 	}
+	return nil
 }
