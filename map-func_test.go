@@ -2,6 +2,7 @@ package o_test
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -34,9 +35,61 @@ func Handler(ctrl *Ctrl, arg string) {
 	}
 }
 
-func TestMapFunc(t *testing.T) {
+func _TestMapFunc(t *testing.T) {
 	m := "login"
 
 	ctrl := new(Ctrl)
 	Handler(ctrl, m)
+}
+
+func MapStructMethods(s interface{}) (map[string]func(), error) {
+	value := reflect.ValueOf(s)
+	numMethod := value.NumMethod()
+	if numMethod == 0 {
+		panic("No methods!")
+	}
+	for i := 0; i < numMethod; i++ {
+		fmt.Println(value.Method(i))
+	}
+	return nil, nil
+}
+
+type AStruct struct {
+	AField string
+}
+
+func (this *AStruct) AFunc() {
+	fmt.Println("Hello A")
+}
+
+func (this *AStruct) BFunc(i int, s string) {
+	fmt.Printf("Hello %d %s\n", i, s)
+}
+
+func TestMapStructFuncs(t *testing.T) {
+	//MapStructMethods(&AStruct{})
+}
+
+type Controller struct {
+	actions map[string]func()
+	Name    string
+}
+
+func NewController() *Controller {
+	this := new(Controller)
+	this.Name = "begin"
+	this.InitFuncs()
+	return this
+}
+
+func (this *Controller) InitFuncs() {
+	this.actions = make(map[string]func())
+
+	this.actions["login"] = func() {
+		fmt.Println(this.Name)
+	}
+
+	this.actions["login"] = func() {
+		fmt.Println(this.Name)
+	}
 }
