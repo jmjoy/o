@@ -1,4 +1,4 @@
-package o2_test
+package o_test
 
 import (
 	"fmt"

@@ -1,0 +1,46 @@
+package main
+
+import (
+    "fmt"
+
+    "github.com/jmjoy/thirdparty:latest"
+)
+
+
+# hello string = "hello"
+# 
+# world :: [string] -> string
+# world o= "world"
+# world s w= 
+# 
+# myadd a int, b int : c int 
+#       = 
+#         // add <- 1 2
+# 
+# mydiv float64 = 
+# 
+# main = fmt.Println <- (hello + world)
+#        // join <- hello world -> fmt.Println
+# 
+#        if <- (a > 1)
+#            hw <- ("hello" + "world") ->
+#            (fmt.Println <- join)
+#            fmt.Println <- "hello world"
+
+def hello = "world"
+
+##########################################
+
+(1 + 2) -> println
+
+1, 2 -> add -> println
+
+(1 + 2), 3 -> gt -> if -> {
+    "hello world" -> println
+} * {
+    "./hello.xxx", "r" -> fopen -> {
+        feof -> not -> for -> {
+
+        }
+    }
+}
